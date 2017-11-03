@@ -27,6 +27,7 @@ import sys, os, time, io, traceback, warnings, weakref, collections.abc
 
 from string import Template
 
+#定义logging 模块要导入的变量
 __all__ = ['BASIC_FORMAT', 'BufferingFormatter', 'CRITICAL', 'DEBUG', 'ERROR',
            'FATAL', 'FileHandler', 'Filter', 'Formatter', 'Handler', 'INFO',
            'LogRecord', 'Logger', 'LoggerAdapter', 'NOTSET', 'NullHandler',
@@ -37,6 +38,7 @@ __all__ = ['BASIC_FORMAT', 'BufferingFormatter', 'CRITICAL', 'DEBUG', 'ERROR',
            'warn', 'warning', 'getLogRecordFactory', 'setLogRecordFactory',
            'lastResort', 'raiseExceptions']
 
+#导入threading 如果导入没有成功、也要分配一个threading的变量、只不过这个变量要设置为None
 try:
     import threading
 except ImportError: #pragma: no cover
@@ -55,17 +57,19 @@ __date__    = "07 February 2010"
 #
 #_startTime is used as the base when calculating the relative time of events
 #
+#标记 导入logging包时的开始时间、之后的所有时间都以这个为基准
 _startTime = time.time()
 
 #
 #raiseExceptions is used to see if exceptions during handling should be
 #propagated
-#
+#标记 在处理的过程中发生异常的话、是否把异常传播出去。
 raiseExceptions = True
 
 #
 # If you don't want threading information in the log, set this to zero
 #
+#标记 是否记录线程信息
 logThreads = True
 
 #
